@@ -1,0 +1,182 @@
+<div class="store-page" dir="rtl">
+
+  <!-- Navbar -->
+  <header class="navbar">
+
+    <!-- Bloomy Logo -->
+    <a class="logo" routerLink="/home">
+      <img src="/Images/logo.jpeg" alt="Bloomy">
+      <span>Bloomy</span>
+    </a>
+
+    <!-- Navigation -->
+    <nav class="nav-links">
+
+      <!-- الرئيسية للجميع -->
+      <a routerLink="/home"
+         routerLinkActive="active"
+         [routerLinkActiveOptions]="{ exact: true }">
+        الرئيسية
+      </a>
+
+      <!-- روابط الزائر -->
+      @if (!isLoggedIn) {
+
+        <a routerLink="/about" routerLinkActive="active">
+          من نحن
+        </a>
+
+        <a routerLink="/contact" routerLinkActive="active">
+          تواصل معنا
+        </a>
+
+      }
+
+      <!-- روابط الأدمن -->
+      @if (isLoggedIn && isAdmin) {
+
+        <a routerLink="/products" routerLinkActive="active">
+          المنتجات
+        </a>
+
+        <a routerLink="/dashboard" routerLinkActive="active">
+          لوحة التحكم
+        </a>
+
+        <a href="#"
+           (click)="logout(); $event.preventDefault()">
+          تسجيل الخروج
+        </a>
+
+      }
+
+    <!-- روابط العميل -->
+@if (isLoggedIn && isCustomer) {
+
+  <a routerLink="/products" routerLinkActive="active">
+    المنتجات
+  </a>
+
+  <a routerLink="/my-orders" routerLinkActive="active">
+    تتبع الطلبات
+  </a>
+
+  <a href="#"
+     (click)="logout(); $event.preventDefault()">
+    تسجيل الخروج
+  </a>
+
+  <!-- أيقونة السلة -->
+  <a routerLink="/cart"
+     class="cart-icon-btn"
+     title="سلة المشتريات"
+     aria-label="سلة المشتريات">
+
+    <svg viewBox="0 0 24 24"
+         xmlns="http://www.w3.org/2000/svg"
+         aria-hidden="true">
+      <path d="M3 3H5L7.2 14.2A2 2 0 0 0 9.16 16H18a2 2 0 0 0 1.94-1.5L22 7H6"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"/>
+      <circle cx="10" cy="20" r="1.5" fill="currentColor"/>
+      <circle cx="18" cy="20" r="1.5" fill="currentColor"/>
+    </svg>
+
+  </a>
+
+}
+
+    </nav>
+
+    <!-- Profile Icon -->
+    <div class="nav-actions">
+
+      <!-- Guest -->
+      @if (!isLoggedIn) {
+        <a routerLink="/login"
+           class="icon-link user-icon"
+           aria-label="تسجيل الدخول">
+          <img src="/Images/user.png" alt="تسجيل الدخول">
+        </a>
+      }
+
+      <!-- Admin Profile -->
+      @if (isLoggedIn && isAdmin) {
+        <a routerLink="/admin-profile"
+           class="icon-link user-icon"
+           aria-label="الملف الشخصي للأدمن">
+          <img src="/Images/user.png" alt="الملف الشخصي">
+        </a>
+      }
+
+      <!-- Customer Profile -->
+      @if (isLoggedIn && isCustomer) {
+        <a routerLink="/customer-profile"
+           class="icon-link user-icon"
+           aria-label="الملف الشخصي للعميل">
+          <img src="/Images/user.png" alt="الملف الشخصي">
+        </a>
+      }
+
+    </div>
+
+  </header>
+
+  <!-- Hero -->
+  <main class="hero">
+
+    <div class="hero-content">
+
+      <h1>
+        اجعل لحظاتك
+        <span>أكثر جمالاً</span>
+      </h1>
+
+      <p>
+        باقات ورد وهدايا مميزة
+        <br>
+        لكل مناسبة
+      </p>
+
+      <a routerLink="/products" class="primary-button">
+        تسوق الآن
+        <span>←</span>
+      </a>
+
+    </div>
+
+    <div class="hero-bottom">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+  </main>
+
+  <!-- Categories -->
+  <section class="categories-section">
+
+    <div class="categories-grid">
+
+      @for (category of categories; track category.name) {
+
+        <div class="category-card">
+
+          <div class="category-image">
+            <img [src]="category.image" [alt]="category.name">
+          </div>
+
+          <h3>{{ category.name }}</h3>
+
+        </div>
+
+      }
+
+    </div>
+
+  </section>
+
+</div>

@@ -1,0 +1,281 @@
+<div class="store-page" dir="rtl">
+
+  <!-- شريط العنوان الأبيض: شعار Bloomy فقط -->
+  <header class="cart-navbar">
+
+    <a routerLink="/home" class="logo">
+      <img src="/Images/logo.jpeg" alt="Bloomy">
+      <span>Bloomy</span>
+    </a>
+
+  </header>
+
+
+  <!-- محتوى السلة -->
+  <main class="cart-page">
+
+    <!-- عنوان الصفحة -->
+    <section class="cart-heading">
+
+      <span class="heading-icon">🛒</span>
+
+      <div>
+        <h1>سلة التسوق</h1>
+        <p>راجعي اختياراتك وأكملي طلبك بكل حب 🌸</p>
+      </div>
+
+    </section>
+
+
+    <!-- السلة فارغة -->
+    <section
+      *ngIf="cartItems.length === 0"
+      class="empty-cart">
+
+      <div class="empty-icon">🛍️</div>
+
+      <h2>سلتك فارغة حالياً</h2>
+
+      <p>
+        لم تضيفي أي منتجات إلى سلتك بعد.
+        اكتشفي منتجات Bloomy واختاري هديتك المفضلة.
+      </p>
+
+      <a routerLink="/products" class="continue-shopping">
+        اكتشفي منتجاتنا
+      </a>
+
+    </section>
+
+
+    <!-- المنتجات وإتمام الطلب -->
+    <div
+      class="cart-layout"
+      *ngIf="cartItems.length > 0">
+
+      <!-- قائمة المنتجات -->
+      <section class="items-section">
+
+        <div class="section-title">
+
+          <h2>منتجاتك المختارة</h2>
+
+          <span class="items-count">
+            {{ cartItems.length }} منتجات
+          </span>
+
+        </div>
+
+
+        <div class="items">
+
+          <article
+            class="cart-item"
+            *ngFor="let item of cartItems">
+
+            <!-- صورة المنتج -->
+            <div class="item-image">
+
+              <img
+                [src]="item.imageUrl"
+                [alt]="item.productName">
+
+            </div>
+
+
+            <!-- معلومات المنتج -->
+            <div class="info">
+
+              <h3>{{ item.productName }}</h3>
+
+              <p class="item-options">
+                {{ item.sizeName }} - {{ item.colorName }}
+              </p>
+
+              <strong class="item-price">
+                {{ item.unitPrice }} ر.س
+              </strong>
+
+            </div>
+
+
+            <!-- التحكم بالكمية -->
+            <div class="qty">
+
+              <button
+                type="button"
+                (click)="decrease(item)"
+                aria-label="تقليل الكمية">
+                −
+              </button>
+
+              <span>{{ item.quantity }}</span>
+
+              <button
+                type="button"
+                (click)="increase(item)"
+                aria-label="زيادة الكمية">
+                +
+              </button>
+
+            </div>
+
+
+            <!-- حذف المنتج -->
+            <button
+              type="button"
+              class="remove"
+              (click)="removeItem(item)"
+              aria-label="حذف المنتج"
+              title="حذف المنتج">
+
+              ×
+
+            </button>
+
+          </article>
+
+        </div>
+
+      </section>
+
+
+      <!-- بطاقة إتمام الطلب -->
+      <aside class="checkout-box">
+
+        <div class="checkout-heading">
+
+          <div class="checkout-icon">🎁</div>
+
+          <div>
+            <h2>إتمام الطلب</h2>
+            <p>أدخلي بيانات التوصيل</p>
+          </div>
+
+        </div>
+
+
+        <!-- بيانات المستلم -->
+        <div class="form-section">
+
+          <h3>معلومات المستلم</h3>
+
+
+          <label class="input-group">
+
+            <span>اسم المستلم</span>
+
+            <input
+              type="text"
+              [(ngModel)]="checkout.receiverName"
+              placeholder="أدخلي الاسم الكامل">
+
+          </label>
+
+
+          <label class="input-group">
+
+            <span>رقم الجوال</span>
+
+            <input
+              type="tel"
+              [(ngModel)]="checkout.receiverPhone"
+              placeholder="أدخلي رقم الجوال">
+
+          </label>
+
+
+          <label class="input-group">
+
+            <span>عنوان التوصيل</span>
+
+            <textarea
+              [(ngModel)]="checkout.deliveryAddress"
+              placeholder="المدينة والحي والعنوان بالتفصيل"
+              rows="3">
+            </textarea>
+
+          </label>
+
+        </div>
+
+
+        <!-- ملخص الفاتورة -->
+        <div class="summary-section">
+
+          <h3>ملخص الطلب</h3>
+
+          <div class="row">
+
+            <span>المجموع</span>
+
+            <span>{{ checkout.subtotal }} ر.س</span>
+
+          </div>
+
+
+          <div class="row">
+
+            <span>رسوم التوصيل</span>
+
+            <span>{{ checkout.deliveryFee }} ر.س</span>
+
+          </div>
+
+
+          <div
+            class="row discount"
+            *ngIf="checkout.discount > 0">
+
+            <span>الخصم</span>
+
+            <span>{{ checkout.discount }} ر.س</span>
+
+          </div>
+
+
+          <div class="summary-divider"></div>
+
+
+          <div class="row total">
+
+            <strong>الإجمالي</strong>
+
+            <strong>{{ checkout.total }} ر.س</strong>
+
+          </div>
+
+        </div>
+
+
+        <!-- تأكيد الطلب -->
+        <button
+          type="button"
+          class="confirm"
+          (click)="confirmOrder()">
+
+          <span>تأكيد الطلب</span>
+          <span>←</span>
+
+        </button>
+
+
+        <p class="checkout-note">
+          💜 شكراً لاختيارك Bloomy
+        </p>
+
+      </aside>
+
+    </div>
+
+  </main>
+
+
+  <!-- Footer -->
+  <footer class="footer">
+
+    <p>© 2026 Bloomy - جميع الحقوق محفوظة 🌸</p>
+
+  </footer>
+
+</div>

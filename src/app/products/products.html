@@ -1,0 +1,134 @@
+<div class="products-page" dir="rtl">
+
+  <!-- Header -->
+  <header class="products-header">
+
+    <!-- شعار Bloomy فقط -->
+    <a routerLink="/home" class="logo">
+      <img src="/Images/logo.jpeg" alt="Bloomy">
+      <span>Bloomy</span>
+    </a>
+
+  </header>
+
+  <!-- Products Hero -->
+  <section class="products-hero">
+
+    <div class="hero-text">
+
+      <h1>منتجاتنا</h1>
+
+      <div class="hero-divider">
+        <span></span>
+        <b>✿</b>
+        <span></span>
+      </div>
+
+      <p>
+        مجموعة مختارة من أجمل الهدايا والورود
+        <br>
+        لكل مناسبة
+      </p>
+
+    </div>
+
+  </section>
+
+  <!-- Main Content -->
+  <main class="products-content">
+
+    <!-- Categories -->
+    <section class="categories">
+
+      @for (category of categories; track category.name) {
+
+        <button
+          type="button"
+          class="category-button"
+          [class.active]="selectedCategory === category.name"
+          (click)="selectCategory(category.name)">
+
+          <span>{{ category.name }}</span>
+          <span class="category-icon">{{ category.icon }}</span>
+
+        </button>
+
+      }
+
+    </section>
+
+    <!-- Products Heading -->
+    <div class="section-heading">
+
+      <h2>اكتشفي منتجات Bloomy</h2>
+
+      <p>
+        اختاري هديتك المفضلة وأضيفي لمستك الجميلة
+      </p>
+
+    </div>
+
+    <!-- Products Grid -->
+    <section class="products-grid">
+
+      @for (product of filteredProducts; track product.productId) {
+
+        <article class="product-card">
+
+          <div class="product-image">
+
+            <img
+              [src]="product.image"
+              [alt]="product.name">
+
+            <button
+              type="button"
+              class="favorite-button"
+              [class.favorite-active]="isFavorite(product.productId)"
+              (click)="toggleFavorite(product.productId)"
+              aria-label="إضافة إلى المفضلة">
+
+              {{ isFavorite(product.productId) ? '♥' : '♡' }}
+
+            </button>
+
+          </div>
+
+          <div class="product-info">
+
+            <h3>{{ product.name }}</h3>
+
+            <p>{{ product.description }}</p>
+
+            <strong class="product-price">
+              {{ product.price }} ر.س
+            </strong>
+
+            <!-- عرض التفاصيل فقط -->
+            <a
+              class="details-button"
+              [routerLink]="['/product', product.productId]">
+
+              عرض التفاصيل
+
+            </a>
+
+          </div>
+
+        </article>
+
+      }
+
+    </section>
+
+    @if (filteredProducts.length === 0) {
+
+      <div class="no-products">
+        لا توجد منتجات في هذا التصنيف حالياً 🌸
+      </div>
+
+    }
+
+  </main>
+
+</div>

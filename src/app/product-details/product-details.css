@@ -1,0 +1,865 @@
+/* ==================================
+   الإعدادات العامة
+================================== */
+
+:host {
+  display: block;
+  width: 100%;
+  height: 100dvh;
+  min-height: 0;
+  overflow: hidden;
+
+  font-family: "Cairo", Tahoma, sans-serif;
+  color: #39243d;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+
+/* ==================================
+   الصفحة الرئيسية
+================================== */
+
+.details-page {
+  width: 100%;
+  height: 100dvh;
+  min-height: 0;
+
+  padding: 10px 18px;
+
+  background:
+    linear-gradient(
+      rgba(250, 225, 248, 0.55),
+      rgba(246, 220, 244, 0.55)
+    ),
+    url('/Images/about.jpg') center / cover no-repeat;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;
+}
+
+
+/* ==================================
+   البطاقة الرئيسية
+================================== */
+
+.details-card {
+  width: 100%;
+  max-width: 1450px;
+  height: 100%;
+  min-height: 0;
+
+  padding: 9px;
+
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  border-radius: 28px;
+
+  background: rgba(255, 255, 255, 0.45);
+
+  box-shadow: 0 12px 30px rgba(105, 35, 110, 0.13);
+
+  display: flex;
+  flex-direction: column;
+
+  overflow: hidden;
+}
+
+
+/* ==================================
+   شريط العنوان
+================================== */
+
+.details-header {
+  height: 64px;
+  min-height: 64px;
+  flex-shrink: 0;
+
+  padding: 0 22px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  direction: ltr;
+
+  background: #fff;
+  border-radius: 20px 20px 0 0;
+
+  box-shadow: 0 3px 12px rgba(80, 35, 85, 0.06);
+}
+
+
+/* الشعار */
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+
+  color: #762b83;
+  text-decoration: none;
+
+  font-size: 31px;
+  font-weight: 900;
+
+  transition: 0.2s;
+}
+
+.logo img {
+  width: 45px;
+  height: 45px;
+  object-fit: contain;
+}
+
+.logo:hover {
+  color: #a443a3;
+}
+
+
+/* العودة للمنتجات */
+
+.back-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  color: #762b83;
+  text-decoration: none;
+
+  font-size: 16px;
+  font-weight: 900;
+
+  direction: rtl;
+  transition: 0.2s;
+}
+
+.back-link:hover {
+  color: #ad4aab;
+}
+
+
+/* ==================================
+   توزيع الصورة والمعلومات
+================================== */
+
+.product-layout {
+  flex: 1;
+  min-height: 0;
+
+  display: grid;
+  grid-template-columns: 1fr 0.95fr;
+
+  gap: 14px;
+  padding-top: 7px;
+
+  direction: rtl;
+
+  overflow: hidden;
+}
+
+
+/* ==================================
+   صورة المنتج
+================================== */
+
+.product-gallery {
+  grid-column: 1;
+  grid-row: 1;
+
+  min-width: 0;
+  min-height: 0;
+
+  display: flex;
+}
+
+.main-image {
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+
+  overflow: hidden;
+
+  border: 4px solid #fff;
+  border-radius: 25px;
+
+  background: #f3dff2;
+
+  box-shadow: 0 8px 22px rgba(100, 40, 110, 0.10);
+}
+
+.main-image img {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+
+  object-fit: contain;
+  object-position: center;
+
+  border-radius: 20px;
+}
+
+
+/* ==================================
+   معلومات المنتج
+================================== */
+
+.product-info {
+  grid-column: 2;
+  grid-row: 1;
+
+  direction: rtl;
+  text-align: right;
+
+  min-width: 0;
+  min-height: 0;
+
+  padding: clamp(14px, 2vh, 22px);
+
+  border: 1px solid #f0dff0;
+  border-radius: 25px;
+
+  background: rgba(255, 255, 255, 0.97);
+
+  box-shadow: 0 8px 20px rgba(100, 40, 110, 0.08);
+
+  display: flex;
+  flex-direction: column;
+
+  overflow: hidden;
+}
+
+
+/* ==================================
+   عنوان المنتج
+================================== */
+
+.product-label {
+  display: inline-block;
+
+  margin-bottom: 7px;
+  padding: 5px 12px;
+
+  border-radius: 20px;
+
+  background: #f8eafa;
+  color: #9a4b9e;
+
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.product-heading h1 {
+  color: #701b79;
+
+  font-size: clamp(23px, 2.1vw, 32px);
+  font-weight: 900;
+
+  margin: 0 0 7px;
+}
+
+
+/* ==================================
+   التقييم
+================================== */
+
+.rating {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  margin-bottom: 5px;
+}
+
+.stars {
+  color: #efa900;
+  font-size: 21px;
+  letter-spacing: 2px;
+}
+
+.reviews {
+  color: #77717b;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+
+/* ==================================
+   السعر
+================================== */
+
+.price {
+  color: #8c328e;
+
+  font-size: clamp(26px, 2.3vw, 34px);
+  font-weight: 900;
+
+  margin-bottom: 5px;
+}
+
+.description {
+  color: #746a78;
+
+  font-size: clamp(12px, 1vw, 14px);
+  font-weight: 600;
+
+  line-height: 1.7;
+  margin: 0;
+}
+
+
+/* ==================================
+   الخط الفاصل
+================================== */
+
+.divider {
+  width: 100%;
+  height: 1px;
+  flex-shrink: 0;
+
+  background: #ead9ed;
+
+  margin: 12px 0;
+}
+
+
+/* ==================================
+   تفاصيل المنتج
+================================== */
+
+.details-section {
+  flex-shrink: 0;
+}
+
+.details-section h2 {
+  color: #701b79;
+
+  font-size: 19px;
+  font-weight: 900;
+
+  margin: 0 0 7px;
+}
+
+.detail-row {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+
+  padding: 8px 0;
+
+  border-bottom: 1px solid #f0e6f1;
+}
+
+.detail-icon {
+  width: 34px;
+  height: 34px;
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 11px;
+  background: #f8eafa;
+
+  font-size: 18px;
+}
+
+.detail-row strong {
+  display: block;
+
+  color: #54205e;
+  font-size: 13px;
+
+  margin-bottom: 2px;
+}
+
+.detail-row p {
+  color: #756a79;
+
+  font-size: 12px;
+  font-weight: 600;
+
+  line-height: 1.5;
+  margin: 0;
+}
+
+
+/* ==================================
+   منطقة الأزرار
+================================== */
+
+.product-actions {
+  margin-top: auto;
+  padding-top: 13px;
+
+  flex-shrink: 0;
+}
+
+
+/* الكمية */
+
+.quantity-section {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  margin-bottom: 12px;
+}
+
+.quantity-section > strong {
+  color: #60176b;
+
+  font-size: 14px;
+  font-weight: 900;
+}
+
+.quantity-control {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  width: 115px;
+  height: 39px;
+
+  border: 1px solid #ead5ec;
+  border-radius: 12px;
+
+  background: #fff;
+  overflow: hidden;
+}
+
+.quantity-control button {
+  width: 34px;
+  height: 100%;
+
+  border: none;
+  background: #fff;
+
+  color: #762b83;
+  font-size: 21px;
+  font-weight: 900;
+
+  cursor: pointer;
+}
+
+.quantity-control button:hover {
+  background: #f5eaf7;
+}
+
+.quantity-control span {
+  color: #54205e;
+
+  font-size: 17px;
+  font-weight: 900;
+}
+
+
+/* أزرار الإضافة والمفضلة */
+
+.action-buttons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.add-to-cart-button {
+  flex: 1;
+  min-width: 0;
+  min-height: 47px;
+
+  border: none;
+  border-radius: 13px;
+
+  background: linear-gradient(90deg, #ad4aab, #701b79);
+  color: #fff;
+
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 900;
+
+  cursor: pointer;
+  transition: 0.2s;
+
+  box-shadow: 0 6px 15px rgba(112, 27, 121, 0.17);
+}
+
+.add-to-cart-button:hover {
+  background: #5c176d;
+  transform: translateY(-2px);
+}
+
+.favorite-button {
+  width: 48px;
+  min-width: 48px;
+  height: 47px;
+
+  border: 2px solid #ead5ec;
+  border-radius: 13px;
+
+  background: #fff;
+  color: #762b83;
+
+  font-size: 27px;
+
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.favorite-button:hover,
+.favorite-button.favorite-active {
+  color: #e64b87;
+  background: #fff0f5;
+  border-color: #f1c4d8;
+}
+
+
+/* ==================================
+   نافذة تسجيل الدخول
+================================== */
+
+.login-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+
+  background: rgba(40, 20, 45, 0.5);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 20px;
+}
+
+.login-message {
+  width: 100%;
+  max-width: 430px;
+
+  padding: 30px;
+  text-align: center;
+
+  background: #fff;
+  border: 1px solid #ead9ef;
+  border-radius: 22px;
+
+  box-shadow: 0 12px 40px rgba(60, 25, 70, 0.2);
+}
+
+.login-icon {
+  font-size: 38px;
+  margin-bottom: 10px;
+}
+
+.login-message h2 {
+  color: #54205e;
+  font-size: 23px;
+  font-weight: 900;
+  margin: 0 0 12px;
+}
+
+.login-message p {
+  color: #765d79;
+  font-size: 16px;
+  line-height: 1.9;
+  margin-bottom: 22px;
+}
+
+.login-button,
+.cancel-button {
+  width: 100%;
+  min-height: 48px;
+
+  border-radius: 12px;
+
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 800;
+
+  cursor: pointer;
+}
+
+.login-button {
+  border: none;
+  background: #762b83;
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+.cancel-button {
+  border: 1px solid #e5d5e9;
+  background: #f8f1fa;
+  color: #71346f;
+}
+
+
+/* ==================================
+   الشاشات القصيرة
+   تصغير إضافي حتى لا يظهر التمرير
+================================== */
+
+@media (max-height: 720px) and (min-width: 701px) {
+
+  .details-page {
+    padding: 6px 14px;
+  }
+
+  .details-card {
+    padding: 6px;
+  }
+
+  .details-header {
+    height: 55px;
+    min-height: 55px;
+    padding: 0 17px;
+  }
+
+  .logo {
+    font-size: 26px;
+  }
+
+  .logo img {
+    width: 39px;
+    height: 39px;
+  }
+
+  .back-link {
+    font-size: 14px;
+  }
+
+  .product-layout {
+    gap: 10px;
+    padding-top: 5px;
+  }
+
+  .product-info {
+    padding: 10px 15px;
+  }
+
+  .product-label {
+    margin-bottom: 4px;
+    padding: 4px 9px;
+    font-size: 10px;
+  }
+
+  .product-heading h1 {
+    font-size: 22px;
+    margin-bottom: 4px;
+  }
+
+  .rating {
+    margin-bottom: 2px;
+  }
+
+  .stars {
+    font-size: 17px;
+  }
+
+  .reviews {
+    font-size: 11px;
+  }
+
+  .price {
+    font-size: 25px;
+    margin-bottom: 3px;
+  }
+
+  .description {
+    font-size: 11px;
+    line-height: 1.5;
+  }
+
+  .divider {
+    margin: 7px 0;
+  }
+
+  .details-section h2 {
+    font-size: 16px;
+    margin-bottom: 3px;
+  }
+
+  .detail-row {
+    gap: 8px;
+    padding: 5px 0;
+  }
+
+  .detail-icon {
+    width: 29px;
+    height: 29px;
+    font-size: 16px;
+  }
+
+  .detail-row strong {
+    font-size: 11px;
+    margin-bottom: 1px;
+  }
+
+  .detail-row p {
+    font-size: 10px;
+    line-height: 1.4;
+  }
+
+  .product-actions {
+    padding-top: 7px;
+  }
+
+  .quantity-section {
+    margin-bottom: 7px;
+  }
+
+  .quantity-control {
+    height: 32px;
+    width: 100px;
+  }
+
+  .quantity-control button {
+    width: 29px;
+    font-size: 18px;
+  }
+
+  .quantity-control span {
+    font-size: 14px;
+  }
+
+  .quantity-section > strong {
+    font-size: 12px;
+  }
+
+  .add-to-cart-button {
+    min-height: 39px;
+    font-size: 13px;
+  }
+
+  .favorite-button {
+    width: 40px;
+    min-width: 40px;
+    height: 39px;
+    font-size: 23px;
+  }
+
+}
+
+
+/* ==================================
+   الجوال
+   السماح بالتمرير حتى لا تختفي المحتويات
+================================== */
+
+@media (max-width: 700px) {
+
+  :host {
+    height: auto;
+    min-height: 100dvh;
+    overflow: visible;
+  }
+
+  .details-page {
+    height: auto;
+    min-height: 100dvh;
+
+    padding: 8px;
+
+    overflow: visible;
+  }
+
+  .details-card {
+    height: auto;
+    min-height: 100dvh;
+
+    padding: 8px;
+
+    border-radius: 22px;
+
+    overflow: visible;
+  }
+
+  .details-header {
+    height: 62px;
+    min-height: 62px;
+
+    padding: 0 10px;
+
+    border-radius: 17px 17px 0 0;
+  }
+
+  .logo {
+    font-size: 23px;
+    gap: 5px;
+  }
+
+  .logo img {
+    width: 36px;
+    height: 36px;
+  }
+
+  .back-link {
+    font-size: 13px;
+  }
+
+  .product-layout {
+    display: flex;
+    flex-direction: column;
+
+    gap: 12px;
+    overflow: visible;
+  }
+
+  .product-gallery {
+    order: 1;
+  }
+
+  .product-info {
+    order: 2;
+
+    padding: 20px 15px;
+
+    border-radius: 20px;
+
+    overflow: visible;
+  }
+
+  .main-image {
+    min-height: 320px;
+    height: 320px;
+
+    border-radius: 20px;
+  }
+
+  .main-image img {
+    min-height: 0;
+    height: 100%;
+
+    border-radius: 15px;
+  }
+
+  .product-heading h1 {
+    font-size: 25px;
+  }
+
+  .price {
+    font-size: 29px;
+  }
+
+  .description {
+    font-size: 14px;
+  }
+
+  .details-section h2 {
+    font-size: 20px;
+  }
+
+  .product-actions {
+    padding-top: 20px;
+  }
+
+  .add-to-cart-button {
+    font-size: 14px;
+  }
+
+}
